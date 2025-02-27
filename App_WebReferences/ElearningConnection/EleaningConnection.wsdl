@@ -1,0 +1,217 @@
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://tempuri.org/">
+<wsdl:types>
+<s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+<s:element name="InsertRecord">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="PersonID" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="ELSCode" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="ELSPart" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="FinishedDate" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="InsertRecordResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="InsertRecordResult" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="Authentication2" type="tns:Authentication2"/>
+<s:complexType name="Authentication2">
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string"/>
+</s:sequence>
+<s:anyAttribute/>
+</s:complexType>
+<s:element name="InsertFeedback">
+<s:complexType/>
+</s:element>
+<s:element name="InsertFeedbackResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="InsertFeedbackResult" type="s:string"/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="string" nillable="true" type="s:string"/>
+</s:schema>
+</wsdl:types>
+<wsdl:message name="InsertRecordSoapIn">
+<wsdl:part name="parameters" element="tns:InsertRecord"/>
+</wsdl:message>
+<wsdl:message name="InsertRecordSoapOut">
+<wsdl:part name="parameters" element="tns:InsertRecordResponse"/>
+</wsdl:message>
+<wsdl:message name="InsertRecordAuthentication2">
+<wsdl:part name="Authentication2" element="tns:Authentication2"/>
+</wsdl:message>
+<wsdl:message name="InsertFeedbackSoapIn">
+<wsdl:part name="parameters" element="tns:InsertFeedback"/>
+</wsdl:message>
+<wsdl:message name="InsertFeedbackSoapOut">
+<wsdl:part name="parameters" element="tns:InsertFeedbackResponse"/>
+</wsdl:message>
+<wsdl:message name="InsertFeedbackAuthentication2">
+<wsdl:part name="Authentication2" element="tns:Authentication2"/>
+</wsdl:message>
+<wsdl:message name="InsertRecordHttpGetIn">
+<wsdl:part name="PersonID" type="s:string"/>
+<wsdl:part name="ELSCode" type="s:string"/>
+<wsdl:part name="ELSPart" type="s:string"/>
+<wsdl:part name="FinishedDate" type="s:string"/>
+</wsdl:message>
+<wsdl:message name="InsertRecordHttpGetOut">
+<wsdl:part name="Body" element="tns:string"/>
+</wsdl:message>
+<wsdl:message name="InsertFeedbackHttpGetIn"/>
+<wsdl:message name="InsertFeedbackHttpGetOut">
+<wsdl:part name="Body" element="tns:string"/>
+</wsdl:message>
+<wsdl:message name="InsertRecordHttpPostIn">
+<wsdl:part name="PersonID" type="s:string"/>
+<wsdl:part name="ELSCode" type="s:string"/>
+<wsdl:part name="ELSPart" type="s:string"/>
+<wsdl:part name="FinishedDate" type="s:string"/>
+</wsdl:message>
+<wsdl:message name="InsertRecordHttpPostOut">
+<wsdl:part name="Body" element="tns:string"/>
+</wsdl:message>
+<wsdl:message name="InsertFeedbackHttpPostIn"/>
+<wsdl:message name="InsertFeedbackHttpPostOut">
+<wsdl:part name="Body" element="tns:string"/>
+</wsdl:message>
+<wsdl:portType name="ElearningConnectionSoap">
+<wsdl:operation name="InsertRecord">
+<wsdl:input message="tns:InsertRecordSoapIn"/>
+<wsdl:output message="tns:InsertRecordSoapOut"/>
+</wsdl:operation>
+<wsdl:operation name="InsertFeedback">
+<wsdl:input message="tns:InsertFeedbackSoapIn"/>
+<wsdl:output message="tns:InsertFeedbackSoapOut"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:portType name="ElearningConnectionHttpGet">
+<wsdl:operation name="InsertRecord">
+<wsdl:input message="tns:InsertRecordHttpGetIn"/>
+<wsdl:output message="tns:InsertRecordHttpGetOut"/>
+</wsdl:operation>
+<wsdl:operation name="InsertFeedback">
+<wsdl:input message="tns:InsertFeedbackHttpGetIn"/>
+<wsdl:output message="tns:InsertFeedbackHttpGetOut"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:portType name="ElearningConnectionHttpPost">
+<wsdl:operation name="InsertRecord">
+<wsdl:input message="tns:InsertRecordHttpPostIn"/>
+<wsdl:output message="tns:InsertRecordHttpPostOut"/>
+</wsdl:operation>
+<wsdl:operation name="InsertFeedback">
+<wsdl:input message="tns:InsertFeedbackHttpPostIn"/>
+<wsdl:output message="tns:InsertFeedbackHttpPostOut"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="ElearningConnectionSoap" type="tns:ElearningConnectionSoap">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="InsertRecord">
+<soap:operation soapAction="http://tempuri.org/InsertRecord" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+<soap:header message="tns:InsertRecordAuthentication2" part="Authentication2" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="InsertFeedback">
+<soap:operation soapAction="http://tempuri.org/InsertFeedback" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+<soap:header message="tns:InsertFeedbackAuthentication2" part="Authentication2" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:binding name="ElearningConnectionSoap12" type="tns:ElearningConnectionSoap">
+<soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="InsertRecord">
+<soap12:operation soapAction="http://tempuri.org/InsertRecord" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+<soap12:header message="tns:InsertRecordAuthentication2" part="Authentication2" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="InsertFeedback">
+<soap12:operation soapAction="http://tempuri.org/InsertFeedback" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+<soap12:header message="tns:InsertFeedbackAuthentication2" part="Authentication2" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:binding name="ElearningConnectionHttpGet" type="tns:ElearningConnectionHttpGet">
+<http:binding verb="GET"/>
+<wsdl:operation name="InsertRecord">
+<http:operation location="/InsertRecord"/>
+<wsdl:input>
+<http:urlEncoded/>
+</wsdl:input>
+<wsdl:output>
+<mime:mimeXml part="Body"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="InsertFeedback">
+<http:operation location="/InsertFeedback"/>
+<wsdl:input>
+<http:urlEncoded/>
+</wsdl:input>
+<wsdl:output>
+<mime:mimeXml part="Body"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:binding name="ElearningConnectionHttpPost" type="tns:ElearningConnectionHttpPost">
+<http:binding verb="POST"/>
+<wsdl:operation name="InsertRecord">
+<http:operation location="/InsertRecord"/>
+<wsdl:input>
+<mime:content type="application/x-www-form-urlencoded"/>
+</wsdl:input>
+<wsdl:output>
+<mime:mimeXml part="Body"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="InsertFeedback">
+<http:operation location="/InsertFeedback"/>
+<wsdl:input>
+<mime:content type="application/x-www-form-urlencoded"/>
+</wsdl:input>
+<wsdl:output>
+<mime:mimeXml part="Body"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="ElearningConnection">
+<wsdl:port name="ElearningConnectionSoap" binding="tns:ElearningConnectionSoap">
+<soap:address location="http://192.168.97.249/QSMS/WS/ElearningConnection.asmx"/>
+</wsdl:port>
+<wsdl:port name="ElearningConnectionSoap12" binding="tns:ElearningConnectionSoap12">
+<soap12:address location="http://192.168.97.249/QSMS/WS/ElearningConnection.asmx"/>
+</wsdl:port>
+<wsdl:port name="ElearningConnectionHttpGet" binding="tns:ElearningConnectionHttpGet">
+<http:address location="http://192.168.97.249/QSMS/WS/ElearningConnection.asmx"/>
+</wsdl:port>
+<wsdl:port name="ElearningConnectionHttpPost" binding="tns:ElearningConnectionHttpPost">
+<http:address location="http://192.168.97.249/QSMS/WS/ElearningConnection.asmx"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

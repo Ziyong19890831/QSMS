@@ -1,0 +1,596 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Web.master.cs" Inherits="MasterPage_Web" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head runat="server">
+    
+    <title>醫事人員戒菸服務訓練系統</title>
+    <link rel="shortcut icon" href="../Images/favicon.ico" />
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <link rel="stylesheet" type="text/css" href="../CSS/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../CSS/mobile.css" media="screen and (max-width: 1000px)" />
+    <link rel="stylesheet" type="text/css" href="../CSS/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="../CSS/modal.css" />
+   
+    <link rel="stylesheet" type="text/css" href="../CSS/style.css" />
+    <link rel="stylesheet" type="text/css" href="../CSS/boostrap.custom.css"/>
+    <link rel="stylesheet" type="text/css" href="../CSS/fontawesome/all.css" />
+    <link rel="stylesheet" type="text/css" href="../CSS/NewStyle.css" />
+    
+    <script type="text/javascript" src="../JS/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="../JS/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../JS/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../JS/PswValid.js"></script>
+    <%--<script type="text/javascript" src="../JS/jquery-steps.js"></script>--%>
+    <%--<script type="text/javascript" src="../JS/validate.js"></script>--%>
+    <%--<script type="text/javascript" src="../JS/jquery-migrate-3.0.0.js"></script>--%>
+
+    <!-- 卡片相關功能 -->
+    <object classid="clsid:97E2BA41-8E68-4FCA-AEC6-DAD248400C20" 
+        codebase="<%=ResolveClientUrl("~/cab/HCAAPIATL.cab#Version=1,0,16,315")%>" style="display:none"  width="0" height="0" id="hca"></object>
+    <object classid="CLSID:E7891ABB-8ACA-4AD3-AE94-8AA7BC3D9BBB" 
+        codebase="<%=ResolveClientUrl("~/cab/NHIICC.cab")%>" style="display:none"  width="0" height="0" id="twNHIICC"></object>    
+    <script type="text/javascript" src="../JS/internet_iccard.js"></script>
+
+
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+    
+
+    <style type="text/css">
+        input[type=button] {
+            -webkit-appearance: none;
+        }
+
+        input[type=submit] {
+            -webkit-appearance: none;
+        }
+        .vCode{
+            float: right; margin: 3px 5px 0 0; height: 27px; width:auto;
+        }
+        .logindiv {
+            padding: 0 10px 10px 10px;
+        }
+        .arrow_box {
+            animation: glow 800ms ease-out infinite alternate;
+        }
+        #Btn_VisF{
+            display:none;
+        }
+    </style>
+
+
+</head>
+
+
+
+<body id="index">
+
+    <div>
+        <form id="form1" runat="server">
+            <div class="wrapper" id="page">
+
+                <div class="header">
+
+                    <a href="Notice.aspx" class="logo left"></a>
+
+                    <% if (MarqueeIsEnable == "1") { %>
+                    <div class="left Marquee"><marquee style="padding:20px;" behavior="alternate" scrollamount="10"><i class="fa fa-smoking-ban"></i> 測試練習區</marquee></div>
+                    <% } %>
+
+                    <div class="right topInfo">
+                        <asp:Label ID="lb_PersonSNO" Style="display: none;" runat="server" Text=""></asp:Label>
+                        <asp:Panel ID="Panel_User" runat="server" Visible="false" class="iblock">
+                            <i class="fa fa-user"></i>
+                            <asp:Label ID="lb_UserName" runat="server" Text=""></asp:Label>　
+                            <asp:Button ID="Btn_Logout" runat="server" Visible="false" OnClientClick="block_verification();" Text="登出" OnClick="lbtnLogout_Click" CausesValidation="False" />
+                            <br />
+                            <a href="../Mgt/Default.aspx" id="HL_SYS" style="color: #fff;" runat="server"><i class="fa fa-cog"></i> 系統管理</a>
+                        </asp:Panel>
+                        <div class="iblock UCache">
+                            <asp:Label ID="Label1" runat="server" Text="累積總瀏覽數"></asp:Label>
+                            <asp:Label ID="lbl_HisTotal" runat="server" Text="0"></asp:Label><br />
+                            <asp:Label ID="Label2" runat="server" Text="今日總瀏覽數"></asp:Label>
+                            <asp:Label ID="lbl_TodayTotal" runat="server" Text="0"></asp:Label><br />
+                            <asp:Label ID="Label3" runat="server" Text="線上人數"></asp:Label>
+                            <asp:Label ID="lbl_OnlineUser" runat="server" Text="0"></asp:Label>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="container">
+                    <div class="content">
+
+                        <div class="bannerMgt">
+                            醫事人員戒菸服務訓練系統
+                        </div>
+
+                        <div class="padding">
+
+
+                            <div class="aside left deskTop">
+
+                                <% 
+                                    //未登入的Menu
+                                    if (IsLogin == false) { %>
+
+
+                                        <div class="block arrow_box">
+                                            <div class="title">會員登入</div>
+
+
+                                            <asp:Panel ID="Panel_right_unlogin" runat="server" class="logindiv">
+                                                <div id="divlogin_Right" runat="server">
+                                                    <div class="abgne_tab">
+                                                        <ul class="tabs" style="margin-bottom:10px;">
+                                                            <li id="tabli1" for="tab1" style="margin:0; padding:0; text-align: center;"><a href="#tab1">一般登入</a></li>
+                                                            <li id="tabli2" for="tab2" style="margin:0; padding:0; text-align: center;"><a href="#tab2">憑證登入</a></li>
+                                                        </ul>
+                                                        <div class="tab_content">
+                                                            <div id="tab1" class="tab_content">
+                                                                <input name="input" type="text" placeholder="輸入帳號" class="w10" id="txt_Account_Right" runat="server" />
+                                                                <%--<input name="input" type="text" style="display:none" />--%>
+                                                                <input name="input" type="password" placeholder="輸入密碼" class="w10" id="txt_PWD_Right" runat="server" onkeypress= "detectCapsLock(event)"/>
+                                                                <input type="checkbox" onclick="ShowPwd()"/>顯示密碼
+                                                              <div id = "capStatus" style = "display:none"><font color = 'red'>請注意 ！Caps Lock 鍵目前為開啟狀態。</font></div> 
+                                                            </div>
+                                                            <div id="tab2" class="tab_content">
+                                                                <%--憑證登入頁籤面--%>
+                                                                <div class="form-check">
+                                                                    <label class="form-check-label" for="loginCardType1" style="color:red">憑證登入僅支援IE11，電腦環境為舊版IE、Chrome之使用者請輸入帳號、密碼登入</label>
+                                                                </div>
+                                                                <input name="input" type="password" placeholder="請輸入憑證 PIN 碼" class="w10" id="cardTypePassword" runat="server" autocomplete="new-password"/>
+                                                                <asp:HiddenField runat="server" ID="hidCardLoginKind" />
+                                                                <asp:HiddenField runat="server" ID="hidCardType" />
+                                                                <asp:HiddenField runat="server" ID="hidCardUserId" />
+                                                                <asp:HiddenField runat="server" ID="hidNow" />
+                                                                <asp:HiddenField runat="server" ID="hidSign" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                
+                                                    <div>
+                                                        
+                                                      <input name="input" type="text" placeholder="驗證碼" id="txt_Verification_Right" runat="server" style="width:70px;" />   
+                                                        <button type="button" onclick="img_CheckCode.src='CheckCode.aspx?' + Math.random();" class="vCode" style="background-color: gray; color:white; font-weight:normal;"><i class="fa fa-sync-alt"></i></button>  
+                                                        <image border="0" src="CheckCode.aspx" alt="驗證碼" id="img_CheckCode" runat="server" class="vCode" />
+                                                    </div>
+
+                                                </div>
+
+                                                <hr />
+                                    
+                                                <asp:Button ID="lbtn_Login_Right" runat="server" Style="margin-top: 10px; width: 98%;" OnClientClick="" Text="登入" OnClick="lbtnLogin_Click" CausesValidation="False" />
+                                                
+                                                <%--<asp:Button ID="lbtn_Card_Login_Right" runat="server" Style="margin-top: 10px; width: 100%; display: none" Text="登入" OnClick="lbtnCardLogin_Click" CausesValidation="False" UseSubmitBehavior="false" formethod="post"/>--%>
+                                                <%--<asp:Button ID="lbtn_CardLogin_Right" runat="server" Style="margin-top: 10px; width: 100%; display:none;" Text="憑證登入"  CausesValidation="False" />
+                                                <asp:Button ID="Btn_VisF" runat="server" OnClick="Btn_VisF_Click" />--%>
+                                                
+                                                 <%  if (IsLogin == false) { %>
+                                                <input id="Button1"  style="float:left;width:48%;font-size:12px" type="button" value="帳號申請" onclick="href('account.aspx')" />
+                                                <input id="Button2" style="width:48%;font-size:12px;float:left" type="button" value="重置密碼" onclick="href('ForgetPassword.aspx')" />
+                                                <input id="Button3" style="width:48%;font-size:12px;float:left" type="button" value="取得帳號" onclick="href('GetPAccount.aspx')" />
+                                                <input id="Button9" style="width:48%;font-size:12px" type="button" value="取得密碼" onclick="href('GetPassword.aspx')" />
+                                                <%--<input id="Button3" style="width:98%" type="button" value="忘記密碼"  />--%>
+                                                <% } %>
+                                            </asp:Panel>
+
+                                        </div>
+
+
+                                    <% } else { //登入的情況下所顯示的Menu %>                 
+                                        
+                                        <div class="block">
+                                            <div class="title">會員專區</div>
+                                            <ul>
+                                                <input type="button" runat="server" id="btn_Message" value="站內訊息" class="btn btn-light" onclick="href('ToDo.aspx')" style="width: 100%" />
+                                                <li><a href="Personnel_AE.aspx"><i class="fa fa-address-book"></i>會員資料</a></li>                                              
+                                                <li><a href="Personnel_PWD.aspx"><i class="fa fa-address-book"></i>修改密碼</a></li>
+                                                <li><a href="ToDo.aspx"><i class="fa fa-clipboard-list"></i>站內訊息</a><asp:Label ID="lb_Count" runat="server" Text="New" ForeColor="Red" Font-Bold="true" Font-Size="Smaller"></asp:Label>
+                                                    <span id="ToDoBg_2" runat="server" style="background-color: red; margin-top: -10px; margin-left: -8px; color: white; padding: 0px 5px; font-size: 10pt; position: absolute; border-radius: 5px">
+                                                        <asp:Label ID="ToDoN_2" runat="server" Text=""></asp:Label></span>
+                                                </li>
+                                               
+                                                <% if (userInfo.IsAdmin == false) { %>
+                                               <%-- <li><a href="Learning.aspx"><i class="fa fa-book"></i>個人學習歷程</a></li>--%>
+                                                 <li><a href="PersonnelSite.aspx"><i class="fa fa-book"></i>個人首頁</a></li>
+                                                <%--<li><a href="Certificate.aspx"><i class="fa fa-certificate"></i>證書資料</a></li>--%>
+                                                <%--<li><a href="CourseInfo.aspx"><i class="fa fa-chalkboard-teacher"></i>課程資訊</a></li>--%>
+                                                <% } %>
+                                            </ul>
+                                        </div>
+                                
+                                    <% } %>
+
+                                        <div class="block">
+                                            <div class="title">學習課程</div>
+                                            <ul>                           
+                                              
+                                                <li><a href="CourseNote.aspx"><i class="fa fa-address-book"></i>服務訓練課程說明</a></li>
+                                                <li><a href="CourseOnline.aspx"><i class="fa fa-chalkboard-teacher"></i>線上課程</a></li>
+                                                <li><a href="CourseOnline_Intel.aspx"><i class="fa fa-chalkboard-teacher"></i>智慧課程選擇器</a></li>
+                                                <li><a href="Event.aspx"><i class="fa fa-address-book"></i>課程及活動報名系統</a></li>
+                                                 <li><a href="Toolkits.aspx"><i class="fa fa-chalkboard-teacher"></i>套裝教材</a></li>
+                                                <%-- <li><a href="<%= BookURL %>" target="_blank"><i class="fa fa-newspaper"></i>套裝教材</a></li>--%>
+                                                 <li><%--<a href="Event.aspx"><i class="fa fa-address-book"></i>配套課程區(藥師/衛教師)</a>--%></li>
+                                            </ul>
+                                        </div>
+
+
+                                        <div class="block">
+                                            <div class="title">服務項目</div>
+                                            <ul>
+                                               
+                                                <li><a href="Notice.aspx"><i class="fa fa-newspaper"></i>公告事項</a></li>
+                                                <%  if (IsLogin == true) { %>
+                                                <%--<li><a href="Question.aspx"><i class="fa fa-edit"></i>問卷填寫</a></li>--%>
+                                                <% } %>                                               
+                                                <li><a href="Feedback.aspx"><i class="fa fa-envelope"></i>意見回饋</a></li>
+                                                <li><a href="Download.aspx"><i class="fa fa-cloud-download-alt"></i>下載專區</a></li>
+                                                <li><a href="NewHand.aspx"><i class="fa fa-address-book"></i>新手上路</a></li>
+                                                <li><a href="Link.aspx"><i class="fa fa-link"></i>相關連結</a></li>
+                                                <li><a href="QA.aspx"><i class="fa fa-question-circle"></i>Q&A</a></li>
+                                                <li><a href="SiteMap.aspx"><i class="fa fa-question-circle"></i>網站地圖</a></li>
+                                            </ul>
+                                        </div>
+
+                                    <%--<asp:Button ID="Button1" runat="server" Text="信件測試(gmail)" OnClick="Button1_Click" />--%>
+
+                            </div>
+
+
+                            <div class="main left" id="mainContent">
+                                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="footer">
+                    <div class="content">
+                        <div class="w2" style="margin-top: 40px; padding-right: 20px">
+                            <img src="../images/logo.png" class="right" width="100" height="103" alt="" />
+                        </div>
+                        <div class="w5" style="float: left">
+                            <strong>醫事人員服務訓練系統&nbsp;&nbsp;&nbsp;&nbsp;經費由國民健康署運用菸品健康福利捐支應</strong><br />
+                         
+                            <a href="mailto:hpaquitsmoking@gmail.com">服務信箱：hpaquitsmoking@gmail.com</a>
+                            <br />
+                            建議使用作業系統win7以上版本，解析度1024x768以上<br />
+                            瀏覽器Chrome、Firefox、Safari、Opera或IE11以上之最新版本，(醫事人員卡須僅限IE11+)<br />
+                            <a href="../Web/Feedback.aspx">意見回饋</a> | <a href="../Web/QA.aspx">Q&A</a> | <a href="../Web/NewHand.aspx">新手上路</a> | <a href="../Web/Download.aspx">下載專區</a> | <a href="../Web/Link.aspx">相關連結</a> | <a href="../Web/Event.aspx">課程及活動報名系統</a>
+
+                        </div>
+                        <div class="w3" style="float: left;padding-left:60px">
+                            <strong style="margin-left:-60px">【業務諮詢】</strong><br />
+                            台灣家庭醫學會：02-23310774#22<br />
+                            牙醫全國聯合會：02-25000133#256<br />
+                            藥師全國聯合會：02-25953856#7<br />
+                            菸防衛教師學會：0966-629965<br />
+                            <strong style="margin-left:-60px">【技術諮詢】</strong><br />
+                            資拓宏宇：<asp:Label id="lb_IISITechnical" runat="server"></asp:Label>
+                        </div>
+                        <div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <!--變更密碼用-->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">醫事人員服務訓練系統<b>修改密碼</b></h5>
+                        </div>
+                        <div class="modal-body">
+                            <div style="text-align: center">
+                                <img style="width: 300px; height: 100px" src="../Images/logo01.png" /><br /><br />
+                                <b>親愛的使用者您好 您的密碼已經過期，請先更新密碼 !</b>
+                            </div>
+                            <br />
+                            <br />
+                            <table>
+                                <tr>
+                                    <th class="w3"><span class="txtRed">*</span>目前密碼</th>
+                                    <td>
+                                        <input id="txt_OldPswd" onfocusout="pwdChkOld('<%=PACC %>',this.id, 'pwdcheckmsg')" style="margin-bottom: 10px;" type="password" runat="server" onkeypress= "CdetectCapsLock(event)"/><span id="pwdcheckmsg"></span>
+                                        <div id = "CcapStatus" style = "display:none"><font color = 'red'>請注意 ！Caps Lock 鍵目前為開啟狀態。</font></div> 
+                                        <br /><input type="checkbox" onclick="OldShowPwd()"/>顯示密碼                                        
+                                        <input type="button" onclick="HrefFunction()"  value="忘記密碼"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="w3"><span class="txtRed">*</span>新密碼</th>
+                                    <td>
+                                        <input id="txt_Pswd" onfocusout="pswChkStrength('txt_Pswd', 'txt_cPswd', 'Ppwdmsg', 'pwdmsg', 'strength')" style="margin-bottom: 10px;" type="password" runat="server" autocomplete="off" onkeypress= "RdetectCapsLock(event)"/>顯示密碼<input type="checkbox" id="show_password" />
+                                         <div id = "RcapStatus" style = "display:none"><font color = 'red'>請注意 ！Caps Lock 鍵目前為開啟狀態。</font></div> 
+                                        <span id="Ppwdmsg"></span>
+                                        <br />
+                                
+                                        <div style="border: 3px solid #c1c1c1; border-radius: 30px; text-align: center; width: 200px; height: 29px; background-color: #eeeeee">
+                                            <div style="width: 64.6px; float: left; border-radius: 30px 0px 0px 30px;" id="strength_L">弱</div>
+                                            <div style="width: 64.6px; float: left; border-radius: 0px;" id="strength_M">中</div>
+                                            <div style="width: 64.7px; float: left; border-radius: 0px 30px 30px 0px;" id="strength_H">強</div>
+                                        </div>
+                                               <br /> <a style="color: red; font-size: 12pt">*註：強度"中"以上"，並且密碼條件必須包含大寫英文加小寫英文及數字混合，長度大於8位。
+                                                   <br />例：1234AaBb</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="w3"><span class="txtRed">*</span>確認新密碼</th>
+                                    <td>
+                                        <input id="txt_cPswd" style="margin-bottom: 10px;" type="password" onfocusout="pswChkInputIsSame('txt_Pswd', 'txt_cPswd', 'pwdmsg')" runat="server" onkeypress= "DdetectCapsLock(event)" autocomplete="new-password"/>
+                                         <div id = "DcapStatus" style = "display:none"><font color = 'red'>請注意 ！Caps Lock 鍵目前為開啟狀態。</font></div> 
+                                        <span id="pwdmsg" style="color: red; visibility: hidden">與密碼不相同</span>
+                                    </td>
+                                </tr>
+                                
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <asp:Button ID="BtnUpdate" runat="server" Text="確定修改" class="btn btn-success" OnClientClick="checkMsgInfo()" OnClick="BtnUpdate_Click"/>
+                            <button type="button" class="btn btn-secondary btnGray" onclick="location.href='Notice.aspx';">取消修改</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+            <script type="text/javascript">
+                //頁簽切換
+                $(function () {
+                    // 預設顯示第一個 Tab
+                    var _showTab = 0;
+                    $('.abgne_tab').each(function () {
+                        // 目前的頁籤區塊
+                        var $tab = $(this);
+            
+                        var $defaultLi = $('ul.tabs li', $tab).eq(_showTab).addClass('active');
+                        $($defaultLi.find('a').attr('href')).siblings().hide();
+            
+                        // 當 li 頁籤被點擊時...
+                        // 若要改成滑鼠移到 li 頁籤就切換時, 把 click 改成 mouseover
+                        $('ul.tabs li', $tab).click(function () {
+                            // 找出 li 中的超連結 href(#id)
+                            var $this = $(this),
+                                _clickTab = $this.find('a').attr('href');
+                            // 把目前點擊到的 li 頁籤加上 .active
+                            // 並把兄弟元素中有 .active 的都移除 class
+                            $this.addClass('active').siblings('.active').removeClass('active');
+                            // 淡入相對應的內容並隱藏兄弟元素
+                            $(_clickTab).stop(false, true).fadeIn().siblings().hide();
+            
+                            return false;
+                        }).find('a').focus(function () {
+                            this.blur();
+                        });
+                    });
+                });
+            </script>
+
+            <script type="text/javascript">
+                function href(URL) {
+                  return location.href=URL
+                }
+            </script>
+
+            <script type="text/javascript">
+
+                function showLogin() {
+                    $("#c_content").show("fade");
+                }
+
+                function hideLogin() {
+                    $("#c_content").hide("fade");
+                }
+                function HrefFunction() {
+                    document.location.href ="https://quitsmoking.hpa.gov.tw/Web/GetPassword.aspx";
+                }
+            </script>
+
+            <script type="text/javascript">
+
+                function pwdChkOld(dInput) {
+
+                    var ACC = "<%= PACC %>"; 
+                    var checkPsw = $("#txt_OldPswd").val();
+                    
+                    if (dInput != "") {
+                        $('#pwdcheckmsg').show();
+                        $.ajax({
+                            url: "AccountAjax.aspx",
+                            type: 'POST',
+                            data: { pwd: checkPsw, account: ACC, personid: "ABC" },
+                            success: function (result) {
+                                if (result == "密碼正確") {
+                                    $('#txt_OldPswd').css("border", "1px solid #ccc");
+                                    $('#pwdcheckmsg').css("color", "	#019858");
+                                    $('#pwdcheckmsg').text("✔" + result);
+                                }
+                                else {
+                                    var results = "密碼不正確"
+                                    $('#txt_OldPswd').css("border", "1px dotted #f84b4b");
+                                    $('#pwdcheckmsg').css("color", "red");
+                                    $('#pwdcheckmsg').text(results);
+                                    
+                                    return false;
+                                }
+                            }
+                        });
+                    }
+                    else if (dInput == "" || dInput == null) {
+                        $('#pwdcheckmsg').text("這是必填的欄位 ");
+                        $('#pwdcheckmsg').css("color", "red");
+                        qucss("ContentPlaceHolder1_txt_OldPswd", "pwdcheckmsg", "S")
+                    }
+                    else {
+                        $('#pwdcheckmsg').hide();
+                    }
+
+
+                }
+            </script>
+
+          <%--  <script type="text/javascript">
+                $(function () {                   
+                    var iccard = new IC_CARD();
+                    var loginButton = $('#<%=lbtn_CardLogin_Right.ClientID%>');    
+                    loginButton.click(function () {
+                        $('#<%=hidCardLoginKind.ClientID%>').val('R');
+                        var tab1 = $('#tab1');
+                        var tab2 = $('#tab2');
+                        if ($(tab1).css('display') === 'block') return true;
+                        else if ($(tab2).css('display') === 'block') {
+                            var cardType = '1';
+                            $('#<%=hidCardType.ClientID%>').val(cardType);
+                            if (cardType == '1') {
+                                var pin = $('#<%=cardTypePassword.ClientID%>').val();
+                                iccard.BeginAuthHPC(pin, function (data)
+                                {
+                                    console.log(data);
+                                    console.log('登入：' + data.idno);                                    
+                                    $('#<%=hidCardUserId.ClientID%>').val(data.idno);                                   
+                                    $('#<%=hidNow.ClientID%>').val(data.now);                                   
+                                    $('#<%=hidSign.ClientID%>').val(data.sign);
+                                    console.log('登入：' + data.sign);  
+                                    $('#<%=Btn_VisF.ClientID%>').click();
+                                }, function (data) {
+                                        alert(data.Message);
+                                    });
+                            } else if (cardType == '2') {
+                            
+                            } else if (cardType == '3') {
+                                iccard.BeginAuthHC(function (data) {
+                                    console.log('登入：' + data.idno);
+                                    $('#<%=hidCardUserId.ClientID%>').val(data.idno);
+                                    $('#<%=Btn_VisF.ClientID%>').click();
+                                }, function (data) {
+                                        alert(data.Message);
+                                    });
+                            }
+                            else {
+                                alert('未知的卡片種類');
+                            }
+                            return false;
+                        }
+                    });
+
+                    $('#tabli1').click(function () {
+                        $('#<%=lbtn_Login_Right.ClientID%>').css('display', 'block');
+                        $('#<%=lbtn_CardLogin_Right.ClientID%>').css('display', 'none');
+                    });
+                    $('#tabli2').click(function () {
+                        $('#<%=lbtn_Login_Right.ClientID%>').css('display', 'none');
+                        $('#<%=lbtn_CardLogin_Right.ClientID%>').css('display', 'block');
+                    });
+			    });
+            </script>--%>
+
+            <script type="text/javascript">
+                function checkMsgInfo() {        
+                    var alertMsg = "";
+                    if ($("#<%=txt_OldPswd.ClientID%>").val() == "") {
+                        alertMsg += "舊密碼不可為空白\n";
+                    }
+                    if ($("#<%=txt_Pswd.ClientID%>").val() == "") {
+                        alertMsg += "新密碼不可為空白\n";
+                    }
+                    if ($("#<%=txt_OldPswd.ClientID%>").val() == "") {
+                        alertMsg += "確認密碼不可為空白\n";
+                    }
+                    if ($('#strength_L').css("background-color") == "rgb(253, 220, 151)") {
+                        alertMsg += "密碼強度過弱請修改!";
+                    }
+                    if (alertMsg != "") {
+                        alert(alertMsg);
+                        event.preventDefault();
+                    }
+                }
+            </script>
+
+            <script type="text/javascript"> 
+                function detectCapsLock(e) {
+                    valueCapsLock = e.keyCode ? e.keyCode : e.which;
+                    valueShift = e.shiftKey ? e.shiftKey : ((valueCapsLock == 16) ? true : false);
+                    if (((valueCapsLock >= 65 && valueCapsLock <= 90) && !valueShift) || ((valueCapsLock >= 97 && valueCapsLock <= 122) && valueShift))
+                        document.getElementById('capStatus').style.display = 'block';
+                    else
+                        document.getElementById('capStatus').style.display = 'none';
+                }
+
+                function RdetectCapsLock(e) {
+                    valueCapsLock = e.keyCode ? e.keyCode : e.which;
+                    valueShift = e.shiftKey ? e.shiftKey : ((valueCapsLock == 16) ? true : false);
+                    if (((valueCapsLock >= 65 && valueCapsLock <= 90) && !valueShift) || ((valueCapsLock >= 97 && valueCapsLock <= 122) && valueShift))
+                        document.getElementById('RcapStatus').style.display = 'block';
+                    else
+                        document.getElementById('RcapStatus').style.display = 'none';
+                }
+                function CdetectCapsLock(e) {
+                    valueCapsLock = e.keyCode ? e.keyCode : e.which;
+                    valueShift = e.shiftKey ? e.shiftKey : ((valueCapsLock == 16) ? true : false);
+                    if (((valueCapsLock >= 65 && valueCapsLock <= 90) && !valueShift) || ((valueCapsLock >= 97 && valueCapsLock <= 122) && valueShift))
+                        document.getElementById('CcapStatus').style.display = 'block';
+                    else
+                        document.getElementById('CcapStatus').style.display = 'none';
+                }
+                function DdetectCapsLock(e) {
+                    valueCapsLock = e.keyCode ? e.keyCode : e.which;
+                    valueShift = e.shiftKey ? e.shiftKey : ((valueCapsLock == 16) ? true : false);
+                    if (((valueCapsLock >= 65 && valueCapsLock <= 90) && !valueShift) || ((valueCapsLock >= 97 && valueCapsLock <= 122) && valueShift))
+                        document.getElementById('DcapStatus').style.display = 'block';
+                    else
+                        document.getElementById('DcapStatus').style.display = 'none';
+                }
+                $('#show_password').click(function () {
+                    // 如果是勾選則...
+                    if (this.checked) {
+                        $(<%= txt_Pswd.ClientID%>).prop('type', 'text');
+                        $(<%= txt_cPswd.ClientID%>).prop('type', 'text');
+                    } else {
+                        $(<%= txt_Pswd.ClientID%>).prop('type', 'password');
+                        $(<%= txt_cPswd.ClientID%>).prop('type', 'password');
+                    }
+                });
+
+                function ShowPwd() {
+                    var x = document.getElementById("txt_PWD_Right");
+                    if (x.type === "password") {
+                        x.type = "text";
+                    } else {
+                        x.type = "password";
+                    }
+                }
+                function OldShowPwd() {
+                    var x = document.getElementById("txt_OldPswd");
+                    if (x.type === "password") {
+                        x.type = "text";
+                    } else {
+                        x.type = "password";
+                    }
+                }
+            </script> 
+
+        </form>
+    </div>
+</body>
+</html>

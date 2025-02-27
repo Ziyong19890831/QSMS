@@ -1,0 +1,28 @@
+@charset "UTF-8";
+.header .blockStytems {
+	display: none;
+}
+.content {
+	width: 100%;
+}
+.banner {
+	height: 130px;
+	font-size: 150%;
+	padding: 10px;
+}
+.main {
+	width: 100%;
+	padding: 0px;
+}
+#menu .aside {
+	width: 100%;
+	padding-top: 20px;
+}
+.deskTop {
+	/* display: none; */
+}
+.mobile {
+	display: inline-block;
+}.blockLogin {
+	width: 100%;
+}

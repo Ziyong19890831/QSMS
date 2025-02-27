@@ -1,0 +1,7 @@
+        <ul class="listNews">
+            <asp:Repeater ID="Repeater1" runat="server">
+                <ItemTemplate>
+                    <li><i class="fa fa-angle-double-right" aria-hidden="true"></i><a href="<%# Eval("Url") %>"><%# Eval("Name") %></a>
+                </ItemTemplate>
+            </asp:Repeater>
+        </ul>

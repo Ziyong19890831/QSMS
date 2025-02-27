@@ -1,0 +1,684 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Web.master.cs" Inherits="MasterPage_Web" %>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head runat="server">
+    <title>醫事人員戒菸服務訓練系統</title>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--::::: FABICON ICON :::::::-->
+    <link rel="shortcut icon" href="../Images/favicon.ico" />
+    <!--::::: ALL CSS FILES :::::::-->
+    <link rel="stylesheet" href="../assets/css/plugins/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/plugins/animate.min.css">
+    <link rel="stylesheet" href="../assets/css/plugins/fontawesome.css">
+    <link rel="stylesheet" href="../assets/css/plugins/modal-video.min.css">
+    <link rel="stylesheet" href="../assets/css/plugins/owl.carousel.css">
+    <link rel="stylesheet" href="../assets/css/plugins/slick.css">
+    <link rel="stylesheet" href="../assets/css/plugins/stellarnav.css">
+    <link rel="stylesheet" href="../assets/css/theme.css">
+
+<%--    <script type src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
+    <script type  src="https://ckeditor.com/apps/ckfinder/3.5.0/ckfinder.js"></script>--%>
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
+    <script src="https://ckeditor.com/apps/ckfinder/3.5.0/ckfinder.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery-3.6.0.min.js"></script>
+    <%--<script src="../assets/js/plugins/jquery.2.1.0.min.js"></script>--%>
+    <script src="../assets/js/plugins/bootstrap.min.js"></script>
+    <script src="../JS/PswValid.js"></script>
+    	    <script src="../JS/HCAAPISVIAdapter.js"></script>
+    <script src="../JS/AllComponentErrCode.js"></script>
+    <%--<script src="../JS/CheckAndLoad.js"></script>
+	 <script src="../JS/HCACSAPISVIAdapter.js"></script>--%>
+	 <script>
+</script>
+    <style>
+        div.pages a {
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .fa-star {
+            color: #FF0000;
+        }
+
+        .vCode {
+            float: right;
+            margin: 3px 5px 0 0;
+            height: 40px;
+            width: auto;
+        }
+
+        .footer {
+            background-color: #70b92d78;
+            border-top: 5px solid #047e3f;
+            border-radius: 20px 20px 0px 0px;
+        }
+
+            .footer, .footer a {
+                color: #047e3f;
+            }
+
+        #Btn_VisF {
+            display: none;
+        }
+    </style>
+        <!-- 卡片相關功能 -->
+    <object classid="clsid:97E2BA41-8E68-4FCA-AEC6-DAD248400C20" 
+        codebase="<%=ResolveClientUrl("~/cab/HCAAPIATL.cab#Version=1,0,16,315")%>" style="display:none"  width="0" height="0" id="hca"></object>
+    <object classid="CLSID:E7891ABB-8ACA-4AD3-AE94-8AA7BC3D9BBB" 
+        codebase="<%=ResolveClientUrl("~/cab/NHIICC.cab")%>" style="display:none"  width="0" height="0" id="twNHIICC"></object>    
+    <script type="text/javascript" src="../JS/internet_iccard.js"></script>
+</head>
+
+<asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+
+
+
+<body class="theme-3 theme3_bg">
+   
+    <!--::::: PRELOADER START :::::::-->
+    <div class="preloader">
+        <div>
+            <div class="nb-spinner"></div>
+        </div>
+    </div>
+    <!--::::: PRELOADER END :::::::-->
+
+    <!--::::: TOP BAR END :::::::-->
+    <div class="border_black"></div>
+    <!--::::: LOGO AREA START  :::::::-->
+    <div class="logo_area white_bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 align-self-center">
+                    <div class="logo">
+                        <a href="../">
+                            <img src="../assets/logo.png" alt="image">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 align-self-center">
+                    <!--::::: Nothing :::::::-->
+                </div>
+                <div class="col-lg-2 align-self-center offset-lg-1">
+                    <!--::::: 線上資訊 START :::::::-->                    
+                    <asp:Label ID="Label1" runat="server" Text="累積總瀏覽數"></asp:Label>
+                    <asp:Label ID="lbl_HisTotal" runat="server" Text="0"></asp:Label><br />
+                    <asp:Label ID="Label2" runat="server" Text="今日總瀏覽數"></asp:Label>
+                    <asp:Label ID="lbl_TodayTotal" runat="server" Text="0"></asp:Label><br />
+                    <asp:Label ID="Label3" runat="server" Text="線上人數"></asp:Label>
+                    <asp:Label ID="lbl_OnlineUser" runat="server" Text="0"></asp:Label>
+                    <!--::::: 線上資訊 END :::::::-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--::::: LOGO AREA END :::::::-->
+
+
+    <!--::::: MENU AREA START  :::::::-->
+    <div class="container">
+        <div class="main-menu">
+            <div class="main-nav clearfix is-ts-sticky">
+                <div class="row justify-content-between">
+                    <div class="col-12 col-lg-12 align-self-center" style="background-color:#6fb92d">
+                        <div class="newsprk_nav stellarnav">
+                            <ul id="newsprk_menu" >
+                                <li><a href="../">首頁</a></li>
+                                <li>
+                                    <a href="#">學習課程 <i class="fal fa-angle-down"></i></a>
+                                    <ul>
+                                        <li><a href="CourseNote.aspx">戒菸服務人員訓練流程圖</a></li>
+                                        <li><a href="CourseOnline.aspx">線上課程</a></li>
+                                        <li><a href="Event.aspx">課程報名</a></li>
+                                        <li><a href="Toolkits.aspx">戒菸套裝教材</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">服務項目 <i class="fal fa-angle-down"></i></a>
+                                    <ul>
+                                        <li><a href="Notice.aspx">公告事項</a></li>
+                                        <li><a href="Feedback.aspx">意見回饋</a></li>
+                                        <li><a href="Download.aspx">下載專區</a></li>
+                                        <li><a href="NewHand.aspx">新手上路</a></li>
+                                        <li><a href="Link.aspx">相關連結</a></li>
+                                        <li><a href="QA.aspx">Q&A</a></li>
+                                        <li><a href="SiteMap.aspx">網站地圖</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--::::: MENU AREA END :::::::-->
+
+    <div class="total3 mb10">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-12">
+                    <img src="../images/banner02_v2.jpg" alt="head_banner"  style="border-radius:20px">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form runat="server">
+        <!--::::: POST GALLARY AREA START :::::::-->
+         
+   
+        <div class="post_gallary_area theme3_bg"  style="background-repeat:no-repeat;background-position:bottom;  background-image: url('../Images/bgCityB.png')";  >
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-4 col-lg-3 col-xl-3">
+                        <div class="white_bg padding15 border-radious5 sm-mt30">
+
+                            <asp:Label ID="lb_PersonSNO" Style="display: none;" runat="server" Text=""></asp:Label>
+                            <asp:Panel ID="Panel_User" runat="server" Visible="false" class="iblock">
+                                <asp:Label ID="lb_UserName" runat="server" Text=""></asp:Label>
+                                <asp:Button ID="Btn_Logout" runat="server" Visible="false" OnClientClick="block_verification();" Text="登出" class="btn btn-dark" OnClick="lbtnLogout_Click" CausesValidation="False" Style="width: 100%" />
+                                <%--<a href="../Mgt/Default.aspx" id="HL_SYS" style="color: #fff;" runat="server"><i class="fa fa-cog"></i>系統管理</a>--%>
+                            </asp:Panel>
+
+                            <% 
+                                //未登入的Menu
+                                if (IsLogin == false)
+                                {
+                            %>
+                            <div  class="row mt10" style=" font-weight:bolder;border-style:solid;border-width:2px;padding:5px;border-color:gray;border-radius:10px;"><%--<div class="title" style="font-weight:bolder;color:red;padding:10px">學員登入</div>--%>
+                            <asp:Panel ID="Panel_right_unlogin" runat="server" class="logindiv">
+                                <div runat="server">
+                                        <ul class="nav nav-tabs" id="myMember" role="tablist">
+                                            <li id="tabli1" for="tab1" style="margin:0; padding:0; text-align: center;">
+                                                <a class="nav-link active" id="tabs-a-1" data-toggle="tab" href="#tab1" role="tab" aria-controls="tabs-1" aria-selected="true">一般登入</a>
+                                            </li>
+                                            <li id="tabli2" for="tab2" style="margin:0; padding:0; text-align: center;">
+                                                <a class="nav-link" id="tabs-a-2" data-toggle="tab" href="#tab2" role="tab" aria-controls="tabs-2" aria-selected="false">憑證登入</a>
+                                            </li>
+                                        </ul>
+                                    <div class="tab-content" id="myTableData">
+                                        <div  class="tab-pane fade mt10 show active " id="tab1" role="tabpanel" aria-labelledby="tabs-a-1">
+                                            <%--帳號登入頁籤面--%>
+                                            <input name="input" type="text" placeholder="輸入帳號" class="w10" id="txt_Account_Right" runat="server" />
+                                            <input name="input" type="password" placeholder="輸入密碼" class="w10" id="txt_PWD_Right" runat="server" onkeypress="detectCapsLock(event)" />
+                                            <input type="checkbox" onclick="ShowPwd()" />顯示密碼
+											<div id="capStatus" style="display: none"><font color='red'>請注意 ！Caps Lock 鍵目前為開啟狀態。</font></div>
+                                        </div>
+                                        <div class="tab-pane fade mt10" id="tab2" role="tabpanel" aria-labelledby="tabs-a-2">
+                                            <%--憑證登入頁籤面--%>
+                                            <div class="form-check">
+                                                <label class="form-check-label" for="loginCardType1" style="color: red">本系統僅支援醫事人員卡憑證登入，並請使用「IE 11瀏覽器」或「以Edge瀏覽器開啟IE模式」登入，另不支援行動智慧攜帶裝置(如:手機/平板...等)</label>
+                                            </div>
+                                            <input name="input" type="password" placeholder="請輸入憑證 PIN 碼" class="w10" id="cardTypePassword" runat="server" />
+                                            <asp:HiddenField runat="server" ID="hidCardLoginKind" />
+                                            <asp:HiddenField runat="server" ID="hidCardType" />
+                                            <asp:HiddenField runat="server" ID="hidCardUserId" />
+                                            <asp:HiddenField runat="server" ID="hidNow" />
+                                            <asp:HiddenField runat="server" ID="hidSign" />
+                                        </div>
+                                    </div>
+
+                                        <div >
+                                            <input name="input" type="text" placeholder="驗證碼" id="txt_Verification_Right" runat="server"  style="width:80px;"/>
+                                            <button type="button" onclick="img_CheckCode.src='CheckCode.aspx?' + Math.random();" class="vCode" style="background-color: gray; color:white; font-weight:normal;"><i class="fa fa-sync-alt"></i></button>
+                                            <image border="0" src="CheckCode.aspx" alt="驗證碼" id="img_CheckCode" runat="server" class="vCode" />
+                                        </div>
+
+                                            <asp:Button ID="lbtn_Login_Right" runat="server" Style="margin-top: 10px; width: 100%;" class="btn btn-dark" OnClientClick="" Text="登入" OnClick="lbtnLogin_Click" CausesValidation="False" />
+                                            <asp:Button ID="lbtn_CardLogin_Right" runat="server" Style="margin-top: 10px; width: 100%; display:none;" Text="憑證登入"  CausesValidation="False" />
+                                            <asp:Button ID="Btn_VisF" runat="server" OnClick="Btn_VisF_Click" />
+                                        </div>
+                                    <%  if (IsLogin == false)
+                                        { %>
+                                    <div >
+                                        <div class="col-12" style="font-weight:bolder;border-style:solid;border-width:2px;padding:5px;margin-bottom:10px;border-color:gray;border-radius:10px"><div class="title" style="font-weight:bolder;color:red;padding:10px">尚未註冊</div>
+                                            <div class="col-12">
+                                                <input id="Button1" type="button" class="btn btn-light" value="學員帳號申請" onclick="href('account.aspx')" style="width: 100%" />
+                                            </div>
+                                             <div class="col-12">
+                                                <input id="Button5" type="button" class="btn btn-light" value="開課單位帳號申請" onclick="href('Unitaccount.aspx')" style="width: 100%" />
+                                            </div>
+                                        </div>
+                                        <div class="col-12" style="font-weight:bolder;border-style:solid;border-width:2px;padding:5px;border-color:gray;border-radius:10px"><div class="title" style="font-weight:bolder;color:red;padding:10px">忘記資料</div>
+                                        
+                                        <div class="col-12">
+                                            <input id="Button3" type="button" class="btn btn-light" value="忘記帳號" onclick="href('GetPAccount.aspx')" style="width: 100%" />
+                                        </div>
+                                        <div class="col-12">
+                                            <input id="Button9" type="button" class="btn btn-light" value="忘記密碼" onclick="href('GetPassword.aspx')" style="width: 100%" />
+                                        </div>
+                                             <div class="col-12">
+                                            <input id="Button2" type="button" class="btn btn-light" value="重置密碼" onclick="href('ForgetPassword.aspx')" style="width: 100%" />
+                                        </div>
+                                             </div>
+                                    </div>
+                                    <% } %>
+                                
+                            </asp:Panel>
+                                </div>
+
+                            <% }
+                                else
+                                { //登入的情況下所顯示的Menu %>
+
+                            <div class="row mt20">
+                                 <%  if (userInfo.IsAdmin == false)
+                                     { %>
+                                <div class="col-12">
+                                    <input type="button" value="個人首頁" class="btn btn-light" onclick="href('PersonnelSite_Integral.aspx')" style="width: 100%" />
+                                </div>
+                                 <% } %>
+                                <div class="col-12">
+                                    <input type="button" value="學員資料" class="btn btn-light" onclick="href('Personnel_AE.aspx')" style="width: 100%" />
+                                </div>
+                                <div class="col-12">
+                                    <input type="button" value="修改密碼" class="btn btn-light" onclick="href('Personnel_PWD.aspx')" style="width: 100%" />
+                                </div>
+                                <div class="col-12">
+                                    <input type="button" runat="server" id="btn_Message" value="站內訊息" class="btn btn-light" onclick="href('ToDo.aspx')" style="width: 100%" />
+                                    <%--<asp:Label ID="lb_Count" runat="server" class="btn btn-light" Text="New" ForeColor="Red" Font-Bold="true" Font-Size="Smaller"></asp:Label>--%>
+                                </div>
+                                   <%  if (userInfo.IsAdmin == false)
+                                       { %>
+                                <div class="col-12">
+                                    <%--<asp:LinkButton  runat="server" ID="LB_AutoSignIn" class="btn btn-light"  Text="線上學習專區" style="width: 100%"></asp:LinkButton>--%>
+                                    <%--<input type="button" runat="server" class="btn btn-light" id="LB_AutoSignIn" value="線上學習專區" style="width: 100%">--%>
+                                    <input type="button" value="線上課程" class="btn btn-light" onclick="href('CourseOnline.aspx')" style="width: 100%" />
+                                </div>
+                                 <% } %>
+                                <div class="col-12">
+                                    <input type="button" value="課程報名" class="btn btn-light" onclick="href('Event.aspx')" style="width: 100%" />
+                                </div>
+                                <div class="col-12">
+                                    <input type="button" id="HL_SYS" runat="server" class="btn btn-light" onclick="href('../Mgt/Default.aspx')" value="系統管理" style="width: 100%">
+                                </div>                             
+                            </div>
+
+                            <% } %>
+                        </div>
+                    </div>
+                    <asp:HiddenField ID="hf_Auto" runat="server" />
+                    <div class="col-12 col-md-8 col-lg-9 col-xl-9">
+                        <div class="white_bg padding15 border-radious5 sm-mt30">
+                            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--::::: POST GALLARY AREA END :::::::-->
+
+        <!--::::: MIX  AREA END :::::::-->
+        <div class="space-100"></div>
+        <!--::::: FOOTER AREA START :::::::-->
+        <style>
+            .footer a {
+                color: #047e3f;
+            }
+        </style>
+        <div class="footer footer_area3" >
+            <div class="container">
+                <div class="row">
+                    <div class="col-12  col-md-2" style="margin-top: 40px; padding-right: 20px">
+                        <img src="../images/logo.png" class="right" width="100" height="103" alt="" />
+                    </div>
+                    <div class="col-12  col-md-6">
+                   <strong>醫事人員戒菸服務訓練系統&nbsp;&nbsp;&nbsp;&nbsp;經費由國民健康署運用菸品健康福利捐支應</strong><br />
+                           【系統操作、訓練課程及戒菸服務資格等業務諮詢】<br />
+                            諮詢專線：(02) 2351-0120<br />
+                            <a href="mailto:hpaquitsmoking@gmail.com">服務信箱：hpaquitsmoking@gmail.com</a>
+                            <br />
+                            建議使用作業系統win7以上版本，解析度1024x768以上<br />
+                            瀏覽器為Chrome、Firefox、Edge、Opera、Safari或IE 11以上之最新版本<br />
+                            憑證登入僅支援使用醫事人員卡，並請使用「IE 11」或「Edge開啟IE模式」登入
+                            <a href="../Web/Feedback.aspx">意見回饋</a> | <a href="../Web/QA.aspx">Q&A</a> | <a href="../Web/NewHand.aspx">新手上路</a> | <a href="../Web/Download.aspx">下載專區</a> | <a href="../Web/Link.aspx">相關連結</a> | <a href="../Web/Event.aspx">課程報名</a>
+
+                    </div>
+                    <div class="col-12  col-md-4">
+  <%--                      <strong>【課程及證書管理諮詢】</strong><br />
+                            <strong>&nbsp;&nbsp;&nbsp;家庭醫學醫學會：02-2331-0774#22</strong><br />
+                            <strong>&nbsp;&nbsp;&nbsp;牙醫師公會全國聯合會：02-2500-0133#256</strong><br />
+                            <strong>&nbsp;&nbsp;&nbsp;藥師公會全國聯合會：02-2595-3856#7</strong><br />
+                            <strong>&nbsp;&nbsp;&nbsp;菸害防制暨戒菸衛教學會：0966-629-965</strong><br />
+                            <strong>【系統操作諮詢】</strong><br />
+                            <strong>&nbsp;&nbsp;&nbsp;資拓宏宇：<asp:Label id="lb_IISITechnical" runat="server">02-23510120</asp:Label></strong>--%>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+      
+        <!--::::: FOOTER AREA END :::::::-->
+
+
+
+
+
+        <style>
+            .w110 {
+                width: 120px;
+            }
+        </style>
+
+        <!--變更密碼用-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+<%--                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">服務訓練系統<b>修改密碼</b></h5>
+                    </div>--%>
+                    <div class="modal-body">
+                        <div style="text-align: center">
+                            <%--<img src="../assets/logo.png" alt="image" style="width: 144px;">--%>
+                            <div class="alert alert-danger" role="alert">
+                                親愛的學員您好：<br />您的密碼已經過期或為臨時性密碼，請先更新密碼 !
+                            </div>
+                        </div>
+                        <table class="table table-striped">
+                            <tr>
+                                <th class="w3 w110"><i class="fa fa-star"></i>目前密碼</th>
+                                <td>
+                                    <input id="txt_OldPswd" class="form-control" onfocusout="pwdChkOld('<%=PACC %>',this.id, 'pwdcheckmsg')" style="margin-bottom: 10px;" type="password" runat="server" onkeypress="CdetectCapsLock(event)" /><span id="pwdcheckmsg"></span>
+                                    <div id="CcapStatus" style="display: none"><font color='red'>請注意 ！Caps Lock 鍵目前為開啟狀態。</font></div>
+                                    <input type="checkbox" onclick="OldShowPwd()" />顯示密碼   
+                                        <br />
+                                    <input type="button" class="btn btn-dark" onclick="HrefFunction()" value="忘記密碼" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="w3 w110"><i class="fa fa-star"></i>新密碼</th>
+                                <td>
+                                    <input id="txt_Pswd" class="form-control" onfocusout="pswChkStrength('txt_Pswd', 'txt_cPswd', 'Ppwdmsg', 'pwdmsg', 'strength')" style="margin-bottom: 10px;" type="password" runat="server" autocomplete="off" onkeypress="RdetectCapsLock(event)" />
+                                    <input type="checkbox" id="show_password" />顯示密碼
+                                        <div id="RcapStatus" style="display: none"><font color='red'>請注意 ！Caps Lock 鍵目前為開啟狀態。</font></div>
+                                    <span id="Ppwdmsg"></span>
+                                    <br />
+                                    <div style="border: 3px solid #c1c1c1; border-radius: 30px; text-align: center; width: 200px; height: 29px; background-color: #eeeeee">
+                                        <div style="width: 64.6px; float: left; border-radius: 30px 0px 0px 30px;" id="strength_L">弱</div>
+                                        <div style="width: 64.6px; float: left; border-radius: 0px;" id="strength_M">中</div>
+                                        <div style="width: 64.7px; float: left; border-radius: 0px 30px 30px 0px;" id="strength_H">強</div>
+                                    </div>
+                                    <br />
+                                    <a style="color: red; font-size: 12pt">*註：強度"中"以上"，並且密碼條件必須包含大寫英文加小寫英文及數字混合，長度大於8位。
+                                            <br />
+                                        例：1234AaBb
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="w3 w110" style="font-size: 15px"><i class="fa fa-star"></i>確認新密碼</th>
+                                <td>
+                                    <input id="txt_cPswd" class="form-control" style="margin-bottom: 10px;" type="password" onfocusout="pswChkInputIsSame('txt_Pswd', 'txt_cPswd', 'pwdmsg')" runat="server" onkeypress="DdetectCapsLock(event)" autocomplete="new-password" />
+                                    <div id="DcapStatus" style="display: none"><font color='red'>請注意 ！Caps Lock 鍵目前為開啟狀態。</font></div>
+                                    <span id="pwdmsg" style="color: red; visibility: hidden">與密碼不相同</span>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <asp:Button ID="BtnUpdate" runat="server" Text="確定修改" class="btn btn-primary" OnClientClick="checkMsgInfo()" OnClick="BtnUpdate_Click" />
+                        <button type="button" class="btn btn-light" onclick="location.href='Notice.aspx';">取消修改</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!--::::: ALL JS FILES :::::::-->
+    <script src="../assets/js/plugins/jquery.nav.js"></script>
+    <script src="../assets/js/plugins/jquery.waypoints.min.js"></script>
+    <script src="../assets/js/plugins/jquery-modal-video.min.js"></script>
+    <script src="../assets/js/plugins/owl.carousel.js"></script>
+    <script src="../assets/js/plugins/popper.min.js"></script>
+    <script src="../assets/js/plugins/stellarnav.js"></script>
+    <script src="../assets/js/plugins/circle-progress.js"></script>
+    <script src="../assets/js/plugins/wow.min.js"></script>
+    <script src="../assets/js/plugins/slick.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+
+    <script type="text/javascript">
+        function href(URL) {
+            return location.href = URL
+        }
+        function showLogin() {
+            $("#c_content").show("fade");
+        }
+
+        function hideLogin() {
+            $("#c_content").hide("fade");
+        }
+        function HrefFunction() {
+            document.location.href = "GetPassword.aspx";
+        }
+
+    </script>
+    <script>
+        $(function () {
+
+            $('#LB_AutoSignIn').click(function () {
+                //var form = document.createElement('form');
+                //form.method = 'POST';
+                //form.action = $('#hf_Auto').val();
+                //form.target = '_blank';
+                //form.id = 'frm';
+                //document.body.append(form);
+                //form.submit();
+                //location.reload();
+                //history.go(0);
+                //parent.window.location.assign(window.location.href);
+
+                //連到ElearningAjax做Key取得
+                $.ajax({
+                    url: 'ElearningAjax.aspx',
+                    type: 'POST',
+                    data: {},
+                    success: function (result) {
+                        var form = document.createElement('form');
+                        form.method = 'POST';
+                        form.action = result;
+                        form.target = '_blank';
+                        form.id = 'frm';
+                        document.body.append(form);
+                        form.submit();
+                    }
+                    , error: function (err) {
+                        console.log('err:');
+                        console.log(err);
+
+                    }
+                });
+
+            });
+        });
+    </script>
+     <script type="text/javascript">
+         $(function () {
+             var iccard = new IC_CARD();
+             var loginButton = $('#<%=lbtn_CardLogin_Right.ClientID%>');
+             loginButton.click(function () {
+                 $('#<%=hidCardLoginKind.ClientID%>').val('R');
+                        var tab1 = $('#tab1');
+                        var tab2 = $('#tab2');
+                        if ($(tab1).css('display') === 'block') return true;
+                        else if ($(tab2).css('display') === 'block') {
+                            var cardType = '1';
+                            $('#<%=hidCardType.ClientID%>').val(cardType);
+                            if (cardType == '1') {
+                                var pin = $('#<%=cardTypePassword.ClientID%>').val();
+                                iccard.BeginAuthHPC(pin, function (data) {
+                                    console.log(data);
+                                    console.log('登入：' + data.idno);
+                                    $('#<%=hidCardUserId.ClientID%>').val(data.idno);
+                                    $('#<%=hidNow.ClientID%>').val(data.now);
+                                    $('#<%=hidSign.ClientID%>').val(data.sign);
+                                    console.log('登入：' + data.sign);  
+                                    $('#<%=Btn_VisF.ClientID%>').click();
+                                }, function (data) {
+                                        alert(data.Message);
+                                    });
+                            } else if (cardType == '2') {
+                            
+                            } else if (cardType == '3') {
+                                iccard.BeginAuthHC(function (data) {
+                                    console.log('登入：' + data.idno);
+                                    $('#<%=hidCardUserId.ClientID%>').val(data.idno);
+                                    $('#<%=Btn_VisF.ClientID%>').click();
+                                }, function (data) {
+                                        alert(data.Message);
+                                    });
+                            }
+                            else {
+                                alert('未知的卡片種類');
+                            }
+                            return false;
+                        }
+                    });
+
+                    $('#tabli1').click(function () {
+                        $('#<%=lbtn_Login_Right.ClientID%>').css('display', 'block');
+                        $('#<%=lbtn_CardLogin_Right.ClientID%>').css('display', 'none');
+                    });
+                    $('#tabli2').click(function () {
+                        $('#<%=lbtn_Login_Right.ClientID%>').css('display', 'none');
+                        $('#<%=lbtn_CardLogin_Right.ClientID%>').css('display', 'block');
+                    });
+         });
+     </script>
+
+    <script type="text/javascript">
+        function pwdChkOld(dInput) {
+
+            var ACC = "<%= PACC %>";
+            var checkPsw = $("#txt_OldPswd").val();
+
+            if (dInput != "") {
+                $('#pwdcheckmsg').show();
+                $.ajax({
+                    url: "AccountAjax.aspx",
+                    type: 'POST',
+                    data: { pwd: checkPsw, account: ACC, personid: "ABC" },
+                    success: function (result) {
+                        if (result == "密碼正確") {
+                            $('#txt_OldPswd').css("border", "1px solid #ccc");
+                            $('#pwdcheckmsg').css("color", "	#019858");
+                            $('#pwdcheckmsg').text("✔" + result);
+                        }
+                        else {
+                            var results = "密碼不正確"
+                            $('#txt_OldPswd').css("border", "1px dotted #f84b4b");
+                            $('#pwdcheckmsg').css("color", "red");
+                            $('#pwdcheckmsg').text(results);
+
+                            return false;
+                        }
+                    }
+                });
+            }
+            else if (dInput == "" || dInput == null) {
+                $('#pwdcheckmsg').text("這是必填的欄位 ");
+                $('#pwdcheckmsg').css("color", "red");
+                qucss("ContentPlaceHolder1_txt_OldPswd", "pwdcheckmsg", "S")
+            }
+            else {
+                $('#pwdcheckmsg').hide();
+            }
+
+
+        }
+    </script>
+
+
+    <script type="text/javascript">
+        function checkMsgInfo() {
+            var alertMsg = "";
+            if ($("#<%=txt_OldPswd.ClientID%>").val() == "") {
+                alertMsg += "舊密碼不可為空白\n";
+            }
+            if ($("#<%=txt_Pswd.ClientID%>").val() == "") {
+                alertMsg += "新密碼不可為空白\n";
+            }
+            if ($("#<%=txt_OldPswd.ClientID%>").val() == "") {
+                alertMsg += "確認密碼不可為空白\n";
+            }
+            if ($('#strength_L').css("background-color") == "rgb(253, 220, 151)") {
+                alertMsg += "密碼強度過弱請修改!";
+            }
+            if (alertMsg != "") {
+                alert(alertMsg);
+                event.preventDefault();
+            }
+        }
+    </script>
+
+    <script type="text/javascript"> 
+        function detectCapsLock(e) {
+            valueCapsLock = e.keyCode ? e.keyCode : e.which;
+            valueShift = e.shiftKey ? e.shiftKey : ((valueCapsLock == 16) ? true : false);
+            if (((valueCapsLock >= 65 && valueCapsLock <= 90) && !valueShift) || ((valueCapsLock >= 97 && valueCapsLock <= 122) && valueShift))
+                document.getElementById('capStatus').style.display = 'block';
+            else
+                document.getElementById('capStatus').style.display = 'none';
+        }
+
+        function RdetectCapsLock(e) {
+            valueCapsLock = e.keyCode ? e.keyCode : e.which;
+            valueShift = e.shiftKey ? e.shiftKey : ((valueCapsLock == 16) ? true : false);
+            if (((valueCapsLock >= 65 && valueCapsLock <= 90) && !valueShift) || ((valueCapsLock >= 97 && valueCapsLock <= 122) && valueShift))
+                document.getElementById('RcapStatus').style.display = 'block';
+            else
+                document.getElementById('RcapStatus').style.display = 'none';
+        }
+        function CdetectCapsLock(e) {
+            valueCapsLock = e.keyCode ? e.keyCode : e.which;
+            valueShift = e.shiftKey ? e.shiftKey : ((valueCapsLock == 16) ? true : false);
+            if (((valueCapsLock >= 65 && valueCapsLock <= 90) && !valueShift) || ((valueCapsLock >= 97 && valueCapsLock <= 122) && valueShift))
+                document.getElementById('CcapStatus').style.display = 'block';
+            else
+                document.getElementById('CcapStatus').style.display = 'none';
+        }
+        function DdetectCapsLock(e) {
+            valueCapsLock = e.keyCode ? e.keyCode : e.which;
+            valueShift = e.shiftKey ? e.shiftKey : ((valueCapsLock == 16) ? true : false);
+            if (((valueCapsLock >= 65 && valueCapsLock <= 90) && !valueShift) || ((valueCapsLock >= 97 && valueCapsLock <= 122) && valueShift))
+                document.getElementById('DcapStatus').style.display = 'block';
+            else
+                document.getElementById('DcapStatus').style.display = 'none';
+        }
+        $('#show_password').click(function () {
+            // 如果是勾選則...
+            if (this.checked) {
+                $(<%= txt_Pswd.ClientID%>).prop('type', 'text');
+                $(<%= txt_cPswd.ClientID%>).prop('type', 'text');
+            } else {
+                $(<%= txt_Pswd.ClientID%>).prop('type', 'password');
+                $(<%= txt_cPswd.ClientID%>).prop('type', 'password');
+            }
+        });
+
+        function ShowPwd() {
+            var x = document.getElementById("txt_PWD_Right");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+        function OldShowPwd() {
+            var x = document.getElementById("txt_OldPswd");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
+
+</body>
+
+</html>

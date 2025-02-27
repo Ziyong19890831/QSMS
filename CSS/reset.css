@@ -1,0 +1,539 @@
+﻿@charset "UTF-8";
+/* CSS Document */
+
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskannada.css);
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans);
+/*@import url(fontawesome/all.css);*/
+/*@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css);*/
+* {
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+	background-repeat: no-repeat;
+	background-position: center center;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-smooth: always;
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: url(images/dreamstime_xxl_36773951.png);
+	font-family: inherit;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	font-size: 100%;
+	font-family: Verdana, Geneva, sans-serif, 微軟正黑體;
+	line-height: 1.5em;
+	margin: 0px;
+	padding: 0px;
+}
+html, body, .wrapper {
+	min-height: 100%;
+	weight: 100%;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+th {
+	font-weight: normal;
+}
+.right {
+	float: right;
+}
+.left {
+	float: left;
+}
+.both {
+	clear: both;
+}
+.center {
+	text-align: center;
+}
+.L1 li, .L2 li, .L3 li, .L4 li, .L5 li, .L6 li, .L7 li, .L8 li, .L9 li, .L10 li {
+	float: left;
+	padding: 10px;
+}
+.L1 label, .L2 label, .L3 label, .L4 label, .L5 label, .L6 label, .L7 label, .L8 label, .L9 label, .L10 label {
+	float: left;
+	padding: 10px;
+	display: block;
+}
+.L1 li, .L1 td, .L1 th, .L1 label {
+	width: 100%;
+}
+.L2 li, .L2 td, .L2 th, .L2 label {
+	width: 50%;
+}
+.L3 li, .L3 td, .L3 th, .L3 label {
+	width: 33%;
+}
+.L4 li, .L4 td, .L4 th, .L4 label {
+	width: 25%;
+}
+.L5 li, .L5 td, .L5 th, .L5 label {
+	width: 20%;
+}
+.L6 li, .L6 td, .L6 th, .L6 label {
+	width: 16.66%;
+}
+.L7 li, .L7 td, .L7 th, .L7 label {
+	width: 14.2%;
+}
+.L8 li, .L8 td, .L8 th, .L8 label {
+	width: 12.5%;
+}
+.L9 li, .L9 td, .L9 th, .L9 label {
+	width: 11.11%;
+}
+.L10 li, .L10 td, .L10 th, .L10 label {
+	width: 10%;
+}
+.w1 {
+	width: 10%;
+}
+.w2 {
+	width: 20%;
+}
+.w3 {
+	width: 30%;
+}
+.w4 {
+	width: 40%;
+}
+.w5 {
+	width: 50%;
+}
+.w6 {
+	width: 60%;
+}
+.w7 {
+	width: 70%;
+}
+.w8 {
+	width: 80%;
+}
+.w9 {
+	width: 90%;
+}
+.w10 {
+	width: 100%;
+}
+.w15 {
+	width: 15%;
+}
+.w25 {
+	width: 25%;
+}
+.w35 {
+	width: 35%;
+}
+.w45 {
+	width: 45%;
+}
+.w55 {
+	width: 55%;
+}
+.w65 {
+	width: 65%;
+}
+.w75 {
+	width: 75%;
+}
+.w85 {
+	width: 85%;
+}
+.w95 {
+	width: 95%;
+}
+.page {
+	padding: 5px;
+	width: 100%;
+	position: fixed;
+	bottom: 0px;
+	text-align: center;
+}
+.page ul li {
+	background-color: #FFF;
+	height: 5px;
+	width: 5px;
+	border-radius: 10px;
+	margin: 2px;
+	float: left;
+}
+.page ul {
+	margin: auto;
+	width: 100px;
+}
+.page ul .active {
+}
+input, select {
+	margin: 2px;
+}
+input[type="text"], textarea, input[type="Password"], select {
+	padding: 5px;
+	border: 1px solid #CCC;
+	border-radius: 3px;
+	background-color: #FFF;
+}
+    input[type="submit"], input[type="reset"], input[type="button"], button, .btn, .btns a {
+        color: #FFF;
+        background-color: #d68f47;
+        border-top-style: none;
+        border-right-style: none;
+        border-bottom-style: none;
+        border-left-style: none;
+        padding-top: 5px;
+        padding-right: 10px;
+        padding-bottom: 5px;
+        padding-left: 10px;
+        border-radius: 3px;
+        cursor: pointer;
+        text-align: center;
+        font-family: '微軟正黑體';
+        /*font-size:14px;*/
+    }
+input[type="reset"] {
+	background-color: #999
+}
+img.left {
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+img.right {
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
+img.center {
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+th, td {
+	padding: 5px;
+}
+.padding {
+	padding: 20px;
+}
+a {
+	text-decoration: none;
+}
+.note, .date {
+	font-size: 90%;
+	color: #999;
+}
+.deskTop {
+	display: inline-block;
+}
+.mobile {
+	display: none;
+}
+.mb10 {
+	margin-bottom: 10px;
+}
+.mb20 {
+	margin-bottom: 20px;
+}
+.mb30 {
+	margin-bottom: 30px;
+}
+.mb40 {
+	margin-bottom: 40px;
+}
+.mb50 {
+	margin-bottom: 50px;
+}
+.mb60 {
+	margin-bottom: 60px;
+}
+.mb70 {
+	margin-bottom: 70px;
+}
+.mb80 {
+	margin-bottom: 80px;
+}
+.mb90 {
+	margin-bottom: 90px;
+}
+.mb100 {
+	margin-bottom: 100px;
+}
+.mt10 {
+	margin-top: 10px;
+}
+.mt20 {
+	margin-top: 20px;
+}
+.mt30 {
+	margin-top: 30px;
+}
+.mt40 {
+	margin-top: 40px;
+}
+.mt50 {
+	margin-top: 50px;
+}
+.mt60 {
+	margin-top: 60px;
+}
+.mt70 {
+	margin-top: 70px;
+}
+.mt80 {
+	margin-top: 80px;
+}
+.mt90 {
+	margin-top: 90px;
+}
+.mt100 {
+	margin-top: 100px;
+}
+.ml10 {
+	margin-left: 10px;
+}
+.ml20 {
+	margin-left: 20px;
+}
+.ml30 {
+	margin-left: 30px;
+}
+.ml40 {
+	margin-left: 40px;
+}
+.ml50 {
+	margin-left: 50px;
+}
+.ml60 {
+	margin-left: 60px;
+}
+.ml70 {
+	margin-left: 70px;
+}
+.ml80 {
+	margin-left: 80px;
+}
+.ml90 {
+	margin-left: 90px;
+}
+.ml100 {
+	margin-left: 100px;
+}
+.mr10 {
+	margin-right: 10px;
+}
+.mr20 {
+	margin-right: 20px;
+}
+.mr30 {
+	margin-right: 30px;
+}
+.mr40 {
+	margin-right: 40px;
+}
+.mr50 {
+	margin-right: 50px;
+}
+.mr60 {
+	margin-right: 60px;
+}
+.mr70 {
+	margin-right: 70px;
+}
+.mr80 {
+	margin-right: 80px;
+}
+.mr90 {
+	margin-right: 90px;
+}
+.mr100 {
+	margin-right: 100px;
+}
+.padding50 {
+	padding: 50px;
+}
+.padding40 {
+	padding: 40px;
+}
+.padding30 {
+	padding: 30px;
+}
+.padding20 {
+	padding: 20px;
+}
+.padding15 {
+	padding: 15px;
+}
+.padding10 {
+	padding: 10px;
+}
+.padding5 {
+	padding: 5px;
+}
+.noBorder {
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+.info {
+	font-size: 85%;
+}
+.inline {
+	display: inline;
+}
+.noPadding {
+	padding: 0px;
+}
+.txtL {
+	text-align: left;
+}
+.txtR {
+	text-align: right;
+}
+.txtRed {
+	color: #F00;
+}
+.txtWhite {
+	color: #FFF;
+}
+.txtBlue {
+	color: #09F;
+}
+.txtGreen {
+	color: #0C0;
+}
+.txtGray {
+	color: #999;
+}
+.txtBlack {
+	color: #000;
+}
+.btnRed {
+	background-color: #F00;
+	color: #FFF;
+}
+.btnWhite {
+	background-color: #FFF;
+	color: #999;
+}
+.btnBlue {
+	background-color: #09F;
+	color: #FFF;
+}
+.btnGreen {
+	background-color: #0C0;
+	color: #FFF;
+}
+.btnGray {
+	background-color: #999;
+	color: #FFF;
+}
+.btnBlack {
+	background-color: #000;
+	color: #FFF;
+}
+.btns .btnRed {
+	background-color: #F00;
+	color: #FFF;
+}
+.btns .btnWhite {
+	background-color: #FFF;
+	color: #999;
+}
+.btns .btnBlue {
+	background-color: #09F;
+	color: #FFF;
+}
+.btns .btnGreen {
+	background-color: #0C0;
+	color: #FFF;
+}
+.btns .btnGray {
+	background-color: #999;
+	color: #FFF;
+}
+.btns .btnBlack {
+	background-color: #000;
+	color: #FFF;
+}
+.txt50 {
+	font-size: 50%;
+}
+.txt60 {
+	font-size: 60%;
+}
+.txt70 {
+	font-size: 70%;
+}
+.txt80 {
+	font-size: 80%;
+}
+.txt90 {
+	font-size: 90%;
+}
+.txt100 {
+	font-size: 100%;
+}
+.txt110 {
+	font-size: 110%;
+}
+.txt120 {
+	font-size: 120%;
+}
+.txt130 {
+	font-size: 130%;
+}
+.txt140 {
+	font-size: 140%;
+}
+.txt150 {
+	font-size: 150%;
+}
+.txt160 {
+	font-size: 160%;
+}
+.txt170 {
+	font-size: 170%;
+}
+.txt180 {
+	font-size: 180%;
+}
+.txt190 {
+	font-size: 190%;
+}
+.txt200 {
+	font-size: 200%;
+}
+.txt210 {
+	font-size: 210%;
+}
+.txt220 {
+	font-size: 220%;
+}
+.txt230 {
+	font-size: 230%;
+}
+.txt240 {
+	font-size: 240%;
+}
+.txt250 {
+	font-size: 250%;
+}
+.none {
+	display: none;
+}

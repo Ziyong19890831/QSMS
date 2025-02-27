@@ -1,0 +1,132 @@
+@charset "UTF-8";
+/* CSS Document */
+body {
+	background-color: #94BF0D;
+}
+.container {
+	width: 100%;
+	background-image: url(file
+:///Macintosh%20HD/Users/chris/Dropbox%20(%E5%B0%9A%E5%AE%9C%E8%A8%AD%E8%A8%88%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8)/%EF%BD%83ase/%E8%B3%87%E6%8B%93%E5%AE%8F%E5%AE%87%E5%9C%8B%E9%9A%9B%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8/%E8%A1%9B%E7%94%9F%E9%83%A8%E5%81%A5%E4%BF%9D%E7%BD%B2/106%E5%B9%B4%E5%BA%A6%E9%86%AB%E7%99%82%E9%99%A2%E6%89%80%E9%A0%90%E9%98%B2%E4%BF%9D%E5%81%A5%E6%9C%8D%E5%8B%99%E7%B3%BB%E7%B5%B1%E5%96%AE%E4%B8%80%E5%85%A5%E5%8F%A3%E6%95%B4%E5%90%88%E8%A6%8F%E5%8A%83%E6%9A%A8%E8%A9%A6%E8%BE%A6%E6%A1%88/www/images/footerBG.png);
+	background-repeat: repeat-x;
+	background-position: center top;
+	background-image: url(../images/bg.jpg);
+	min-height: 950px;
+	background-color: #CBF7E8;
+}
+.content {
+	width: 1200px;
+	margin: auto;
+	position: relative;
+	background-image: url(../images/containerBG.jpg);
+	background-repeat: no-repeat;
+	background-position: center top;
+	height: 1200px;
+	background-size: contain;
+}
+.blockLogin {
+	width: 30%;
+	margin: auto;
+	padding-top: 5%;
+}
+h1 {
+	line-height: 1.5em;
+	color: #3B7517;
+	text-shadow: 2px 2px #fff;
+}
+input {
+	font-size: 90%;
+}
+input[type="button"] {
+	font-size: 100%;
+	padding: 10px;
+}
+.blockStytems {
+	position: absolute;
+	width: 90%;
+	font-size: 150%;
+	line-height: 1.5em;
+	float: left;
+	margin-top: 25%;
+	margin-right: auto;
+	margin-bottom: auto;
+	margin-left: 7%;
+}
+.blockStytems div {
+	height: 150px;
+	width: 150px;
+	border-radius: 100px;
+	color: #FFF;
+	text-align: center;
+	font-size: 120%;
+	font-weight: bold;
+	padding-top: 4%;
+	margin: 10px;
+	box-shadow: 5px 5px 0px #86A404;
+}
+.blockStytems .system01 {
+	background-color: #F90;
+	margin-left: 30%;
+}
+.blockStytems .system02 {
+	background-color: #F60;
+	float: right;
+	margin-top: -7%;
+	margin-right: 30%;
+}
+.blockStytems .system03 {
+	background-color: #69C;
+	margin-left: 13%;
+	margin-top: -3%;
+}
+.blockStytems .system04 {
+	background-color: #F30;
+	float: right;
+	margin-top: 0%;
+	margin-right: 22%;
+}
+.blockStytems .system05 {
+	background-color: #833602;
+	margin-top: 10%;
+	margin-left: 20%;
+}
+.blockStytems .system06 {
+	background-color: #639;
+	float: right;
+	margin-top: 6%;
+	margin-right: 20%;
+}
+.blockStytems .system07 {
+	background-color: #06C;
+	margin-left: 5%;
+	margin-top: 10%;
+}
+.top {
+	color: #FFF;
+	background-color: #94BF0D;
+	padding: 10px;
+}
+.margin2 {
+	margin: 2px;
+}
+.footer {
+	clear: both;
+	width: 100%;
+	font-size: 95%;
+	color: #FFF;
+	background-color: #94BF0D;
+	text-align: center;
+	line-height: 2em;
+	padding: 20px;
+}
+.footer a {
+	color: #FFF;
+}
+.blockLogin h1 {
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+	border-bottom-color: #3B7517;
+	text-align: center;
+	margin-bottom: 10px;
+	font-family: Verdana, Geneva, sans-serif;
+	font-weight: bold;
+}

@@ -1,0 +1,271 @@
+@charset "UTF-8";
+/* CSS Document */
+body {
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cfe7fa+0,6393c1+100;Grey+Blue+3D */
+	background: #cfe7fa; /* Old browsers */
+	background: -moz-radial-gradient(center, ellipse cover, #cfe7fa 0%, #6393c1 100%); /* FF3.6-15 */
+	background: -webkit-radial-gradient(center, ellipse cover, #cfe7fa 0%, #6393c1 100%); /* Chrome10-25,Safari5.1-6 */
+	background: radial-gradient(ellipse at center, #cfe7fa 0%, #6393c1 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cfe7fa', endColorstr='#6393c1', GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+.container {
+	width: 100%;
+ background-image: url(file :///Macintosh%20HD/Users/chris/Dropbox%20(%E5%B0%9A%E5%AE%9C%E8%A8%AD%E8%A8%88%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8)/%EF%BD%83ase/%E8%B3%87%E6%8B%93%E5%AE%8F%E5%AE%87%E5%9C%8B%E9%9A%9B%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8/%E8%A1%9B%E7%94%9F%E9%83%A8%E5%81%A5%E4%BF%9D%E7%BD%B2/106%E5%B9%B4%E5%BA%A6%E9%86%AB%E7%99%82%E9%99%A2%E6%89%80%E9%A0%90%E9%98%B2%E4%BF%9D%E5%81%A5%E6%9C%8D%E5%8B%99%E7%B3%BB%E7%B5%B1%E5%96%AE%E4%B8%80%E5%85%A5%E5%8F%A3%E6%95%B4%E5%90%88%E8%A6%8F%E5%8A%83%E6%9A%A8%E8%A9%A6%E8%BE%A6%E6%A1%88/www/images/footerBG.png);
+	background-repeat: repeat-x;
+	background-position: center bottom;
+	min-height: 950px;
+	float: left;
+}
+.content {
+	width: 1000px;
+	margin: auto;
+	position: relative;
+	background-image: url(../images/intro03BG.png);
+	background-repeat: no-repeat;
+	background-position: center 50px;
+	height: 980px;
+}
+.blockLogin {
+	width: 185px;
+	padding-top: 485px;
+	margin: auto;
+	padding-left: 10px;
+}
+h1 {
+	line-height: 1.5em;
+	color: #406182;
+	text-shadow: 2px 2px #fff;
+}
+input {
+	font-size: 90%;
+}
+input[type="button"] {
+	font-size: 100%;
+	padding: 10px;
+}
+.blockStytems {
+	position: absolute;
+	width: 90%;
+	font-size: 150%;
+	line-height: 1.5em;
+	float: left;
+	margin-top: 6%;
+	margin-right: auto;
+	margin-bottom: auto;
+	margin-left: 5%;
+}
+.blockStytems div {
+	height: 200px;
+	width: 200px;
+	border-radius: 100px;
+	color: #6393C1;
+	text-align: center;
+	font-size: 120%;
+	font-weight: bold;
+	margin: 10px;
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-color: transparent;
+	padding-top: 120px;
+}
+.blockStytems .system01 {
+	background-image: url(../images/system01BG.png);
+	margin-left: 40%;
+}
+.blockStytems .system02 {
+	background-image: url(../images/system02BG.png);
+	float: right;
+	margin-top: -9%;
+	margin-right: 8.5%;
+}
+.blockStytems .system03 {
+	background-image: url(../images/system03BG.png);
+	margin-left: 8%;
+ margin-top: -5 *10;
+	margin-top: -10%;
+}
+.blockStytems .system04 {
+	background-image: url(../images/system04BG.png);
+	float: right;
+	margin-top: 7%;
+	margin-right: -36%;
+	padding-top: 110px;
+}
+.blockStytems .system05 {
+	background-image: url(../images/system05BG.png);
+	margin-top: 7%;
+	margin-left: -5%;
+	background-position: center 10px;
+}
+.blockStytems .system06 {
+	background-image: url(../images/system06BG.png);
+	float: right;
+	margin-top: 14%;
+	margin-right: 4%;
+}
+.blockStytems .system07 {
+	background-image: url(../images/system07BG.png);
+	margin-left: 5%;
+	margin-top: 13%;
+	background-position: center 15px;
+}
+#index .blockStytems .system01, #index .blockStytems .system02, #index .blockStytems .system03, #index .blockStytems .system04, #index .blockStytems .system05, #index .blockStytems .system06, #index .blockStytems .system07 {
+	margin: auto;
+	float: none;
+}
+.top {
+	color: #FFF;
+	background-color: #6393c1;
+	padding: 10px;
+	float: left;
+	width: 100%;
+}
+.margin2 {
+	margin: 2px;
+}
+.footer {
+	clear: both;
+	width: 100%;
+	font-size: 95%;
+	color: #406182;
+	text-align: center;
+	line-height: 2em;
+	padding: 20px;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #6393C1;
+}
+.footer a {
+	color: #406182;
+}
+.blockLogin h1 {
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+	border-bottom-color: #406182;
+	text-align: center;
+	margin-bottom: 10px;
+	font-family: Verdana, Geneva, sans-serif;
+	font-weight: bold;
+}
+
+.top marquee.left {
+	width: calc(100% - 660px);
+	margin-top: 5px;
+}
+#index .blockStytems div {
+	display: inline-block;
+	width: 13.5%;
+	height: 135px;
+	padding-top: 6%;
+	font-size: 100%;
+	border: 3px solid #FFF;
+	background-size: 45%;
+	line-height: 1em;
+	color: #FFF;
+}#index .blockStytems div:hover {
+	color: #FFF;
+	background-color: #6393C1;
+}
+#index .blockStytems {
+	width: 100%;
+	margin-top: 20px;
+	clear: both;
+	position: static;
+	margin-bottom: 60px;
+	margin-right: 0px;
+	margin-left: 0px;
+}
+.header {
+}
+.top .blockLogin {
+	margin: 0px;
+	padding: 0px;
+	width: 650px;
+	float: right;
+}
+.blockLogin img {
+	vertical-align: middle;
+}
+.aside {
+	width: 20%;
+}
+.title {
+	color: #FFF;
+	background-color: #6393C1;
+	width: 100%;
+	border-radius: 30px;
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 20px;
+}
+.aside .block ul li a {
+	
+	width: 100%;
+	padding-top: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+}
+.aside .block ul {
+	width: 100%;
+}
+.aside .block ul li {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #6393C1;
+	margin-left: 20px;
+	margin-right: 20px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.aside .block {
+	margin-bottom: 20px;
+}
+.main {
+	width: 75%;
+	float: right;
+	margin-bottom: 60px;
+}a {
+	color: #333;}.listNews li {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-bottom-width: 1px;
+	border-bottom-style: dashed;
+	border-bottom-color: #6393C1;
+}
+.aside .block ul li a .fa {
+	color: #6393C1;
+	margin-right: 5px;
+	text-align: center;
+	width: 20px;
+}
+.listNews li .fa {
+	color: #6393C1;
+	margin-right: 5px;
+}
+.pages {
+	width: 90%;
+}
+.listNews {
+	margin-bottom: 20px;
+}
+.pages a {
+	margin-right: 10px;
+	margin-left: 10px;
+}.pages a:hover,.pages a.active {
+	color: #3B7517;
+}
+.pages a .fa {
+	margin-right: 5px;
+	margin-left: 5px;
+}
+#index .wrapper .container .content {
+	background-image: none;
+	height: auto;
+}
+#index .blockStytems .system07,#index .blockStytems .system05 {
+	background-position: top;
+}
+#index .wrapper .container {
+	min-height: auto;
+}

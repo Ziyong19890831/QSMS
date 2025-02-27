@@ -1,0 +1,308 @@
+﻿@charset "UTF-8";
+ @import url(https://use.fontawesome.com/releases/v5.2.0/css/all.css);
+/* CSS Document */
+
+/*Layout01*/
+.wrapper {
+	/* background-image: url(http://idesign4u.updog.co/Demo/Smoking/images/footer.png); */
+	min-height: 1050px;
+}
+.header {
+	background-color: #cf8b67;
+	background-image: url(http://idesign4u.updog.co/Demo/Smoking/images/bgHeader.png);
+}
+body {
+	background-image: linear-gradient(180deg, rgb(254, 246, 235) 0%, rgb(207, 138, 103) 100%);
+}
+.top {
+	background-color: #fef6eb;
+}
+
+th {
+	background-color: #cf8a67;
+}
+.path a:last-child {
+	color: #cf8a67;
+}
+tr:nth-child(odd) {
+	background-color: #fef6eb;
+}
+.footer {
+	color: #664a3b;
+	background-image: url(http://idesign4u.updog.co/Demo/Smoking/images/footer.png);
+	background-position: center bottom;
+	height: 270px;
+}
+.footer a {
+	color: #674b3c;
+}
+input[type="submit"], input[type="reset"], input[type="button"], .btn, .btns a, button {
+	background-color: #674b3c;
+}
+
+
+input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover, .btn:hover, .btns a:hover, button:hover {
+    background-color: #fc8d1b;
+    color:white;
+}
+
+#ContentPlaceHolder1_more a {
+	padding: 5px 10px 5px 10px;
+	border-radius: 5px;
+	color: #674b3c;
+	border: 1px solid #674b3c;
+	font-size: 80%;
+}
+#index .blockStytems a:last-child {
+	color: #674b3c;
+}
+
+
+.fa-star {
+    color:red;
+}
+
+table, td {
+    border: 1px solid #cf8a67;
+}
+/*Layout02*/
+.top a {
+	color: #000;
+}
+.header {
+	background-color: #0584be;
+	background-image: none;
+}
+body {
+	background-image: linear-gradient(180deg, rgb(215, 242, 255) 0%, rgb(177, 224, 248) 100%);
+}
+.top {
+	background-color: #f9bf3b;
+	color: #000;
+	text-shadow: none;
+}
+
+div#ContentPlaceHolder1_more a {
+	padding: 5px 10px 5px 10px;
+	border-radius: 5px;
+	color: #0584be;
+	border: 1px solid #0584be;
+	font-size: 80%;
+}
+
+th {
+	background-color: #b3ebf2;
+	color: #0584be;
+}
+table, td {
+	border: 1px solid #0584be;
+}
+input[type="submit"], input[type="reset"], input[type="button"], .btn, .btns a, button {
+	color: #000;
+	background-color: #f9bf3b;
+}
+
+.path a:last-child {
+	color: #0584be;
+}
+.footer, .footer a {
+	color: #0584be;
+}
+tr:nth-child(odd) {
+	background-color: #f6f6f6;
+}
+.footer {
+	color: #0584be;
+	background-image: url(http://idesign4u.updog.co/Demo/Smoking/images/footer01.png);
+	background-position: center bottom;
+	height: 270px;
+}
+/*Layout03*/
+body {
+	background-color: #fff;
+	background-image: none;
+}
+.header {
+	background-image: linear-gradient(180deg, rgb(179, 214, 153) 0%, rgb(111, 185, 45) 100%);
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+	margin-bottom: 10px;
+	box-shadow: 1px 2px 1px rgba(0,0,0,.4);
+}
+
+
+.path a:last-child {
+	color: #027f3f;
+}
+th {
+	background-color: #6fb92d;
+	color: #ffffff;
+}
+table, td {
+	border: 1px solid #6fb92d;
+}
+.footer, .footer a {
+	color: #047e3f;
+}
+.footer {
+	text-align: left;
+	background-color: #70b92d78;
+	border-top: 5px solid #047e3f;
+	background-image: none;
+	height: auto;
+	padding: 20px;
+	float: left;
+	border-radius: 20px 20px 0px 0px;
+}
+.container {
+	padding-bottom: 30px;
+}
+.content, .padding {
+	background-color: #fffbdf;
+	border-radius: 20px;
+	box-shadow: 1px 2px 1px rgba(0,0,0,.4);
+}
+
+.footer .content {
+	box-shadow: none;
+}
+.footer .content div {
+	float: left;
+}
+.footer .w7 {
+	padding: 20px 0px 0px 10px;
+}
+#index .wrapper .container {
+	background-position: left bottom;
+	background-image: url(../images/bgCityB.png);
+	margin-bottom: 10px;
+}
+img {
+	/*width: 100%;
+	height: auto;*/
+}
+.row {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	margin-right: -15px;
+	margin-left: -15px;
+}
+.col {
+	-ms-flex-preferred-size: 0;
+	flex-basis: 0;
+	-webkit-box-flex: 1;
+	-ms-flex-positive: 1;
+	flex-grow: 1;
+	max-width: 100%;
+}
+/*.col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
+	position: relative;
+	width: 100%;
+	min-height: 1px;
+	padding-right: 15px;
+	padding-left: 15px;
+}*/
+/*input[type="text"], textarea, input[type="Password"] {
+	width: 100%;
+}*/
+h2 {
+	color: #047e3f;
+	font-size: 110%;
+}
+hr {
+	border-color: #70b92d;
+	border-top: none;
+}
+.col input[type="button"] {
+	width: 100%;
+}
+.footer img {
+	width: 100px;
+}
+.aside .block:last-child {
+	margin-bottom: 0px;
+}
+/*180816 篩檢表格*/
+.blockStyle01 {
+	padding: 20px;
+}
+.blockStyle01 input[type="text"] {
+	width: auto;
+}
+i.fas.fa-venus {
+	color: #ec008c;
+	font-size: 130%;
+}
+.blockStyle01 img {
+	width: 50px;
+}
+.blockStyle01 table {
+	background-color: #fff;
+	text-align: center;
+}
+.blockStyle01 th {
+	background-color: #6eb92c;
+	border: 1px solid #fff;
+}
+.blockStyle01 h2 {
+	margin-bottom: 20px;
+}
+/*180824*/
+body {
+}
+.blockStyle01 table td {
+	border: none;
+}
+.blockStyle01 th {
+	border-top: none;
+}
+.blockStyle01 table tr:first-child {
+	background-color: #eee;
+	background-image: url(../images/tableBG.png);
+	background-size: cover;
+	background-position: center bottom;
+}
+.blockStyle01 table tr:first-child td {
+	padding-bottom: 0px;
+	padding-top: 30px;
+}
+.blockStyle01 table {
+	border: none;
+}
+.blockStyle01 i.fas.fa-times {
+	color: red;
+}
+.blockStyle01 i.far.fa-circle {
+	color: green;
+}
+.blockStyle01 i {
+	font-size: 150%;
+}
+.blockStyle01 img {
+	width: 30%;
+}
+.blockStyle01 th:nth-child(2) {
+	opacity: 0.45;
+}
+.blockStyle01 th:nth-child(3) {
+	opacity: 0.65;
+}
+.blockStyle01 th:nth-child(4) {
+	opacity: 0.75;
+}
+.blockStyle01 th:nth-child(5) {
+	opacity: 0.85;
+}
+.blockStyle01 th:nth-child(6) {
+	opacity: 0.95;
+}
+.blockStyle01 i.fas.fa-question {
+    color: cornflowerblue;
+    font-size:  140%;
+}
+tr {
+    background-color: #fff;
+}

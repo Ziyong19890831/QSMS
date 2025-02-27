@@ -1,0 +1,36 @@
+﻿.six-sitemapBoxB   div > ul > li > ul {
+    padding-left: 15px;
+    margin-left: 15px;
+    border-left: 1px solid #37aeae;
+}
+
+.six-sitemapBoxB   div > ul > li > ul > li,
+.six-sitemapBoxB   div > ul > li > ul > li li {
+    padding-bottom: 3px;
+}
+
+.six-sitemapBoxB  div > ul > li {
+    display: inline-block;
+    padding: 0 15px 30px 0;
+    vertical-align: top;
+}
+.six-sitemapBoxB  div > ul li a:before {
+    content: attr(data-id);
+    background-color: #60c2c3;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    padding: 1px 4px;
+    color: #fff;
+    margin-right: 3px;
+}
+
+.six-sitemapBoxB  div > ul > li > a:before {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding-top: 3px;
+    background-color: #37aeae;
+    margin-right: 5px;
+}
